@@ -14,7 +14,7 @@ void getpassword(char *password)
     char passwordchar;
     int currentindex=0;
 
-    printf("Insira a sua password: ");
+    printf("Password: ");
     do
     {
         passwordchar = getch();
