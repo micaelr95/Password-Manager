@@ -1,7 +1,9 @@
-#include "../includes/lib.h"
+#include <locale.h>
+#include "menulogin.h"
 
 int main()
 {
-    printHello();
+    setlocale(LC_ALL, "");
+    menulogin();
     return 0;
 }
