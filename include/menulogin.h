@@ -7,4 +7,6 @@ void menulogin(void);
 
 void criarConta(t_user arrusers[], int *index);
 
+void fazlogin(t_user arrusers[], int index);
+
 #endif // MENULOGIN_H

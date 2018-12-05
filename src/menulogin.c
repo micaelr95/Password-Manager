@@ -1,6 +1,7 @@
 #include "menulogin.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "common.h"
 
 void menulogin(void)
@@ -18,7 +19,7 @@ void menulogin(void)
         switch (opcao)
         {
             case '1':
-
+                fazlogin(users, userindex);
                 break;
             case '2':
                 criarConta(users, &userindex);
@@ -31,7 +32,36 @@ void criarConta(t_user arrusers[], int *index)
 {
     clearscreen();
     printf(" -------------------- NOVO UTILIZADOR -------------------- \n");
+    arrusers[*index].id = *index;
+    printf("Nome: ");
+    scanf(" %[^\n]%*c", arrusers[*index].nome);
+    printf("Numero de identificação fiscal: ");
+    scanf(" %[^\n]%*c", arrusers[*index].nif);
     getusername(arrusers[*index].username);
     getpassword(arrusers[*index].masterpassword);
     *index+=1;
+}
+
+void fazlogin(t_user arrusers[], int index)
+{
+    char user[USERNAMESIZE];
+    char pass[PASSSIZE];
+    clearscreen();
+    printf(" -------------------- LOGIN -------------------- \n");
+    getusername(user);
+    getpassword(pass);
+    printf("%d", index);
+    for (int i=0; i < index; i++)
+    {
+        printf("%d", i);
+        if(((strcmp(arrusers[i].username, user)) == 0) && ((strcmp(arrusers[i].masterpassword, pass)) == 0))
+        {
+            printf("\nBem vindo %s!", arrusers[i].username);
+        }
+        else
+        {
+            printf("\nCredenciais erradas! Por favor tente de novo");
+        }
+    }
+    getch();
 }
