@@ -1,19 +1,26 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-#define STRINGSIZE 20
+#define ACCESSSIZE 20
+
+#define NAMESIZE 30
+#define USERNAMESIZE 20
+#define PASSSIZE 20
+#define NIFSIZE 10
 
 typedef struct
 {
     int id;
-    char nome[STRINGSIZE];
-    char nif[STRINGSIZE];
-    char username[STRINGSIZE];
-    char masterpassword[STRINGSIZE];
+    char nome[NAMESIZE];
+    char nif[NIFSIZE];
+    char username[USERNAMESIZE];
+    char masterpassword[PASSSIZE];
 } t_user;
 
 void getusername(char *user);
 
 void getpassword(char *pass);
+
+void clearscreen(void);
 
 #endif // COMMON_H

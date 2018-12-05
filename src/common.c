@@ -1,5 +1,6 @@
 #include "common.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 // Pede o nome do utilizador
 void getusername(char *username)
@@ -24,5 +25,10 @@ void getpassword(char *password)
             password[currentindex] = passwordchar;
             currentindex++;
         }
-    }while(passwordchar!=13 && currentindex<STRINGSIZE-1);
+    }while(passwordchar!=13 && currentindex<PASSSIZE-1);
+}
+
+void clearscreen(void)
+{
+    system("@cls||clear");
 }
