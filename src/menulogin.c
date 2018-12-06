@@ -19,16 +19,16 @@ void menulogin(void)
         switch (opcao)
         {
             case '1':
-                fazlogin(users, userindex);
+                login(users, userindex);
                 break;
             case '2':
-                criarConta(users, &userindex);
+                addUser(users, &userindex);
                 break;
         }
     }while(opcao!='0');
 }
 
-void criarConta(t_user arrusers[], int *index)
+void addUser(t_user arrusers[], int *index)
 {
     clearscreen();
     printf(" -------------------- NOVO UTILIZADOR -------------------- \n");
@@ -42,7 +42,7 @@ void criarConta(t_user arrusers[], int *index)
     *index+=1;
 }
 
-void fazlogin(t_user arrusers[], int index)
+void login(t_user arrusers[], int index)
 {
     char user[USERNAMESIZE];
     char pass[PASSSIZE];
