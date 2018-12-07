@@ -3,10 +3,8 @@
 
 #include "common.h"
 
-void menulogin(void);
+int menulogin(t_user arr_users[], int *index);
 
-void addUser(t_user arrusers[], int *index);
-
-void login(t_user arrusers[], int index);
+int login(t_user arrusers[], int index);
 
 #endif // MENULOGIN_H

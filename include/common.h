@@ -21,6 +21,10 @@ void getusername(char *user);
 
 void getpassword(char *pass);
 
+void getName(char *name);
+
+void getNIF(char *nif);
+
 void clearscreen(void);
 
 #endif // COMMON_H
