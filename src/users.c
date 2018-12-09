@@ -1,15 +1,15 @@
 #include "users.h"
 
-void addUser(t_user arrusers[], int *index)
+int addUser(t_user arrusers[], int index)
 {
     clearscreen();
     printf(" -------------------- NOVO UTILIZADOR -------------------- \n");
-    arrusers[*index].id = *index;
-    getName(arrusers[*index].nome);
-    getNIF(arrusers[*index].nif);
-    getusername(arrusers[*index].username);
-    getpassword(arrusers[*index].masterpassword);
-    *index+=1;
+    arrusers[index].id = index;
+    getName(arrusers[index].nome);
+    getNIF(arrusers[index].nif);
+    getusername(arrusers[index].username);
+    getpassword(arrusers[index].masterpassword);
+    return index+1;
 }
 
 void showUser(t_user arrusers[], int index)
@@ -25,4 +25,27 @@ void showUser(t_user arrusers[], int index)
         printf("Palavra passe mestra: %s\n", arrusers[userindex].masterpassword);
     }
     getch();
+}
+
+int login(t_user arr_user[], int arr_index)
+{
+    char user[USERNAMESIZE];
+    char pass[PASSSIZE];
+    int logincorrect = 0;
+    clearscreen();
+    printf(" -------------------- LOGIN -------------------- \n");
+    getusername(user);
+    getpassword(pass);
+    for (int i=0; i < arr_index; i++)
+    {
+        if(((strcmp(arr_user[i].username, user)) == 0) && ((strcmp(arr_user[i].masterpassword, pass)) == 0))
+        {
+            logincorrect = 1;
+        }
+        else
+        {
+            logincorrect = 0;
+        }
+    }
+    return logincorrect;
 }

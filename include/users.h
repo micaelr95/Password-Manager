@@ -3,8 +3,10 @@
 
 #include "common.h"
 
-void addUser(t_user arrusers[], int *index);
+int addUser(t_user arrusers[], int index);
 
 void showUser(t_user arrusers[], int index);
+
+int login(t_user arrusers[], int index);
 
 #endif // USERS_H
