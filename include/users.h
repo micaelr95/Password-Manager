@@ -5,7 +5,7 @@
 
 int addUser(t_user arrusers[], int index);
 
-void showUser(t_user arrusers[], int index);
+void showUser(t_user arrusers[], int user_num);
 
 int login(t_user arrusers[], int index);
 

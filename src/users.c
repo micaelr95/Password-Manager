@@ -2,28 +2,40 @@
 
 int addUser(t_user arrusers[], int index)
 {
+    char pass[PASSSIZE];
+    char passverify[PASSSIZE];
     clearscreen();
     printf(" -------------------- NOVO UTILIZADOR -------------------- \n");
     arrusers[index].id = index;
     getName(arrusers[index].nome);
     getNIF(arrusers[index].nif);
     getusername(arrusers[index].username);
-    getpassword(arrusers[index].masterpassword);
+    do
+    {
+        getpassword(pass);
+        printf("\nVerifique a ");
+        getpassword(passverify);
+        if(strcmp(pass, passverify)==0)
+        {
+            strcpy(arrusers[index].masterpassword, pass);
+        }
+        else
+        {
+            printf("\nAs palavras passe não coincidem! Tente de novo.\n");
+        }
+    }while(strcmp(pass, passverify)!=0);
     return index+1;
 }
 
-void showUser(t_user arrusers[], int index)
+void showUser(t_user arrusers[], int user_num)
 {
     clearscreen();
-    printf(" -------------------- LISTA DE UTILIZADORES -------------------- \n");
-    for(int userindex = 0; userindex < index; userindex++)
-    {
-        printf("ID: %d\n", arrusers[userindex].id);
-        printf("Nome: %s\n", arrusers[userindex].nome);
-        printf("NIF: %s\n", arrusers[userindex].nif);
-        printf("Nome de utilizador: %s\n", arrusers[userindex].username);
-        printf("Palavra passe mestra: %s\n", arrusers[userindex].masterpassword);
-    }
+    printf(" -------------------- Informações do Utilizador -------------------- \n");
+    printf("ID: %d\n", arrusers[user_num].id);
+    printf("Nome: %s\n", arrusers[user_num].nome);
+    printf("NIF: %s\n", arrusers[user_num].nif);
+    printf("Nome de utilizador: %s\n", arrusers[user_num].username);
+    printf("Palavra passe mestra: %s\n", arrusers[user_num].masterpassword);
     getch();
 }
 
@@ -31,7 +43,7 @@ int login(t_user arr_user[], int arr_index)
 {
     char user[USERNAMESIZE];
     char pass[PASSSIZE];
-    int logincorrect = 0;
+    int numuser = -1;
     clearscreen();
     printf(" -------------------- LOGIN -------------------- \n");
     getusername(user);
@@ -40,12 +52,9 @@ int login(t_user arr_user[], int arr_index)
     {
         if(((strcmp(arr_user[i].username, user)) == 0) && ((strcmp(arr_user[i].masterpassword, pass)) == 0))
         {
-            logincorrect = 1;
-        }
-        else
-        {
-            logincorrect = 0;
+            numuser = i;
+            break;
         }
     }
-    return logincorrect;
+    return numuser;
 }
