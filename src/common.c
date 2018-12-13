@@ -45,3 +45,24 @@ void clearscreen(void)
 {
     system("@cls||clear");
 }
+
+void getDate(t_date i_data)
+{
+    scanf(" %2d/%2d/%4d", i_data.dia, i_data.mes, i_data.ano);
+}
+
+void getHour(t_hour i_hora)
+{
+    scanf(" %2d:%2d:%2d", i_hora.hora, i_hora.minuto, i_hora.segundo);
+}
+
+void getSecurity(int *security)
+{
+    printf("Insira um grau de segurança (1 - Baixo, 2 - Médio, 3 - Elevado): ");
+    do{
+        scanf(" %d", security);
+        if (security <1 && security>3){
+            printf("Por favor insira (1 - Baixo, 2 - Médio, 3 - Elevado) ");
+        }
+    }while(security <1 && security>3);
+}
