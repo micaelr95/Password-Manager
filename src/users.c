@@ -7,13 +7,16 @@ int addUser(t_user arrusers[], int index)
     clearscreen();
     printf(" -------------------- NOVO UTILIZADOR -------------------- \n");
     arrusers[index].id = index;
+    printf("Nome: ");
     getName(arrusers[index].nome);
     getNIF(arrusers[index].nif);
+    printf("Nome do utilizador: ");
     getusername(arrusers[index].username);
     do
     {
+        printf("Password: ");
         getpassword(pass);
-        printf("\nVerifique a ");
+        printf("\nVerifique a password");
         getpassword(passverify);
         if(strcmp(pass, passverify)==0)
         {
@@ -46,7 +49,9 @@ int login(t_user arr_user[], int arr_index)
     int numuser = -1;
     clearscreen();
     printf(" -------------------- LOGIN -------------------- \n");
+    printf("Nome do utilizador: ");
     getusername(user);
+    printf("Password: ");
     getpassword(pass);
     for (int i=0; i < arr_index; i++)
     {

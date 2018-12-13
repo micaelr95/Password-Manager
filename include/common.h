@@ -8,7 +8,7 @@
 #define NAMESIZE 30
 #define USERNAMESIZE 20
 #define PASSSIZE 20
-#define NIFSIZE 10
+#define NIFSIZE 8
 
 typedef struct
 {

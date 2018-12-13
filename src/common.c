@@ -5,7 +5,6 @@
 // Pede o nome do utilizador
 void getusername(char *username)
 {
-    printf("Nome do utilizador: ");
     scanf(" %20s", username);
 }
 
@@ -14,8 +13,6 @@ void getpassword(char *password)
 {
     char passwordchar;
     int currentindex=0;
-
-    printf("Password: ");
     do
     {
         passwordchar = getch();
@@ -31,14 +28,13 @@ void getpassword(char *password)
 
 void getName(char *name)
 {
-    printf("Nome: ");
     scanf(" %30[^\n]", name);
 }
 
 void getNIF(char *nif)
 {
     printf("Numero de identificação fiscal: ");
-    scanf(" %10[^\n]", nif);
+    scanf(" %8[^\n]", nif);
 }
 
 void clearscreen(void)

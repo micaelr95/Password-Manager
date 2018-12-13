@@ -9,6 +9,7 @@ int addResource(t_resource arr_resource[], int num_res)
     int index;
     clearscreen();
     printf(" -------------------- NOVO RECURSO -------------------- \n");
+    printf("Nome: ");
     getName(name);
     for(index = 0; index < num_res; index++)
     {
