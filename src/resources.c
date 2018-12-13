@@ -23,8 +23,9 @@ int addResource(t_resource arr_resource[], int num_res)
     {
         arr_resource[num_res].id = num_res;
         strcpy(arr_resource[num_res].name, name);
-        getSecurity(&arr_resource.grauseguranca);
-        getName(arr_resource.designacao);
+        getSecurity(&arr_resource[num_res].grauseguranca);
+        printf("Designação: ");
+        getName(arr_resource[num_res].designacao);
         num_res+=1;
         printf("Recurso adicionado com sucesso!");
     }
@@ -44,6 +45,8 @@ void viewResource(t_resource arr_resource[], int num_res)
     {
         printf("ID: %d\n", arr_resource[index].id);
         printf("Nome: %s\n", arr_resource[index].name);
+        printf("Grau de Segurança: %d\n", arr_resource[index].grauseguranca);
+        printf("Designação: %s\n", arr_resource[index].designacao);
     }
     getch();
 }

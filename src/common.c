@@ -57,8 +57,8 @@ void getSecurity(int *security)
     printf("Insira um grau de segurança (1 - Baixo, 2 - Médio, 3 - Elevado): ");
     do{
         scanf(" %d", security);
-        if (security <1 && security>3){
+        if (*security <1 && *security>3){
             printf("Por favor insira (1 - Baixo, 2 - Médio, 3 - Elevado) ");
         }
-    }while(security <1 && security>3);
+    }while(*security <1 && *security>3);
 }

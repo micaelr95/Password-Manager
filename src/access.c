@@ -10,7 +10,7 @@ int addaccess(t_resource arr_resource[], int num_ress, t_access arr_access[], in
     int index;
     clearscreen();
     printf(" -------------------- NOVO ACESSO -------------------- \n");
-    printf("Nome do recurso ");
+    printf("Nome do recurso: ");
     getName(resourcename);
     for(index = 0; index < num_ress; index++)
     {
@@ -36,7 +36,7 @@ int addaccess(t_resource arr_resource[], int num_ress, t_access arr_access[], in
         getusername(arr_access[num_acc].username);
         printf("Password: ");
         getpassword(arr_access[num_acc].password);
-        getDate(arr_access[num_acc].date);
+        getDate(arr_access[num_acc].data);
         getHour(arr_access[num_acc].hora);
         num_acc+=1;
         printf("\nAcesso adicionado com sucesso!");
