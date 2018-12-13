@@ -59,6 +59,7 @@ int menulogin(t_user arr_users[], int *num_users)
     do
     {
         clearscreen();
+        printf(" -------------------- MENU LOGIN -------------------- \n");
         printf("[1] Login\n");
         printf("[2] Criar Conta\n");
         printf("\n[0] Sair\n");
