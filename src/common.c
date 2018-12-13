@@ -34,7 +34,14 @@ void getName(char *name)
 void getNIF(char *nif)
 {
     printf("Numero de identificação fiscal: ");
-    scanf(" %8[^\n]", nif);
+    do
+    {
+        scanf(" %8d", nif);
+        if(strlen(nif) != NIFSIZE)
+        {
+            printf("Numero de identificação fiscal incorreto. Insira de novo ");
+        }
+    }while(strlen(nif) != NIFSIZE);
 }
 
 void clearscreen(void)

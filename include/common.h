@@ -30,7 +30,7 @@ typedef struct
 {
     int id;
     char nome[NAMESIZE];
-    char nif[NIFSIZE];
+    int nif;
     char username[USERNAMESIZE];
     char masterpassword[PASSSIZE];
 } t_user;

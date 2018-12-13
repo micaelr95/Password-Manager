@@ -16,7 +16,7 @@ int addUser(t_user arrusers[], int index)
     {
         printf("Password: ");
         getpassword(pass);
-        printf("\nVerifique a password");
+        printf("\nVerifique a password: ");
         getpassword(passverify);
         if(strcmp(pass, passverify)==0)
         {
@@ -36,7 +36,7 @@ void showUser(t_user arrusers[], int user_num)
     printf(" -------------------- Informações do Utilizador -------------------- \n");
     printf("ID: %d\n", arrusers[user_num].id);
     printf("Nome: %s\n", arrusers[user_num].nome);
-    printf("NIF: %s\n", arrusers[user_num].nif);
+    printf("NIF: %d\n", arrusers[user_num].nif);
     printf("Nome de utilizador: %s\n", arrusers[user_num].username);
     printf("Palavra passe mestra: %s\n", arrusers[user_num].masterpassword);
     getch();
