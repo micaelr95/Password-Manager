@@ -3,9 +3,11 @@
 #include "common.h"
 #include "users.h"
 #include "resources.h"
+#include "access.h"
 
 int menulogin(t_user arr_users[], int *num_users);
 void menuresources(t_resource arr_resources[], int *num_resources);
+void menuaccess(t_resource arr_resources[], int *num_resources, t_access arr_access[], int *num_access, int num_user);
 
 int main()
 {
@@ -13,6 +15,8 @@ int main()
     int userindex = 0;
     t_resource resources[MAX_RESOURCES];
     int resourceindex = 0;
+    t_access access[MAX_ACCESS];
+    int accessindex = 0;
     int opcao;
     int usernum = 0;
 
@@ -33,9 +37,10 @@ int main()
             switch (opcao)
             {
                 case '1':
-                    menuresources(resources, resourceindex);
+                    menuresources(resources, &resourceindex);
                     break;
                 case '2':
+                    menuaccess(resources, &resourceindex, access, &accessindex, usernum);
                     break;
                 case '3':
                     showUser(users, usernum);
@@ -82,6 +87,29 @@ void menuresources(t_resource arr_resources[], int *num_resources)
     do
     {
         clearscreen();
+        printf(" -------------------- MENU RECURSOS -------------------- \n");
+        printf("[1] Adicionar\n");
+        printf("[2] Ver\n");
+        printf("\n[0] Voltar\n");
+        opcao = getch();
+        switch (opcao)
+        {
+            case '1':
+                *num_resources = addResource(arr_resources, *num_resources);
+                break;
+            case '2':
+                viewResource(arr_resources, *num_resources);
+                break;
+        }
+    }while(opcao!='0');
+}
+
+void menuaccess(t_resource arr_resources[], int *num_resources, t_access arr_access[], int *num_access, int num_user)
+{
+    int opcao;
+    do
+    {
+        clearscreen();
         printf(" -------------------- MENU ACESSOS -------------------- \n");
         printf("[1] Adicionar\n");
         printf("[2] Ver\n");
@@ -90,10 +118,10 @@ void menuresources(t_resource arr_resources[], int *num_resources)
         switch (opcao)
         {
             case '1':
-                num_resources = addResource(arr_resources, num_resources);
+                *num_access = addaccess(arr_resources, *num_resources, arr_access, *num_access, num_user);
                 break;
             case '2':
-                viewResource(arr_resources, num_resources);
+                viewaccess(arr_access, *num_access);
                 break;
         }
     }while(opcao!='0');

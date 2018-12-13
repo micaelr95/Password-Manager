@@ -25,6 +25,15 @@ typedef struct
     char name[NAMESIZE];
 } t_resource;
 
+typedef struct
+{
+    int id;
+    int iduser;
+    int idresource;
+    char username[USERNAMESIZE];
+    char password[PASSSIZE];
+} t_access;
+
 void getusername(char *user);
 
 void getpassword(char *pass);
