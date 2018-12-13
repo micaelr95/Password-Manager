@@ -31,16 +31,19 @@ int addaccess(t_resource arr_resource[], int num_ress, t_access arr_access[], in
         arr_access[num_acc].id = num_acc;
         arr_access[num_acc].idresource = arr_resource[index].id;
         arr_access[num_acc].iduser = id_user;
+        arr_access[num_acc].tipo = 0;   // 0 para criaï¿½ï¿½o e 1 para alteraï¿½ï¿½o
         printf("Nome do utilizador: ");
         getusername(arr_access[num_acc].username);
         printf("Password: ");
         getpassword(arr_access[num_acc].password);
+        getDate(arr_access[num_acc].date);
+        getHour(arr_access[num_acc].hora);
         num_acc+=1;
         printf("\nAcesso adicionado com sucesso!");
     }
     else
     {
-        printf("\nEste recurso não existe!");
+        printf("\nEste recurso nï¿½o existe!");
     }
     getch();
     return num_acc;

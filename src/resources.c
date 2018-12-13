@@ -23,6 +23,8 @@ int addResource(t_resource arr_resource[], int num_res)
     {
         arr_resource[num_res].id = num_res;
         strcpy(arr_resource[num_res].name, name);
+        getSecurity(&arr_resource.grauseguranca);
+        getName(arr_resource.designacao);
         num_res+=1;
         printf("Recurso adicionado com sucesso!");
     }
