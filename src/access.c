@@ -36,7 +36,9 @@ int addaccess(t_resource arr_resource[], int num_ress, t_access arr_access[], in
         getusername(arr_access[num_acc].username);
         printf("Password: ");
         getpassword(arr_access[num_acc].password);
+        printf("\n");
         getDate(arr_access[num_acc].data);
+        printf("\n");
         getHour(arr_access[num_acc].hora);
         num_acc+=1;
         printf("\nAcesso adicionado com sucesso!");
