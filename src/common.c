@@ -37,7 +37,7 @@ void getNIF(char *nif)
     do
     {
         fflush(stdin);
-        scanf(" %8d", nif);
+        scanf(" %s", nif);
         if(strlen(nif) != NIFSIZE)
         {
             printf("Numero de identificação fiscal incorreto. Insira de novo: ");

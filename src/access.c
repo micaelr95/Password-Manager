@@ -43,7 +43,7 @@ int addaccess(t_resource arr_resource[], int num_ress, t_access arr_access[], in
     }
     else
     {
-        printf("\nEste recurso n�o existe!");
+        printf("\nEste recurso não existe!");
     }
     getch();
     return num_acc;

@@ -30,7 +30,7 @@ typedef struct
 {
     int id;
     char nome[NAMESIZE];
-    int nif;
+    char nif[NIFSIZE];
     char username[USERNAMESIZE];
     char masterpassword[PASSSIZE];
 } t_user;
@@ -65,5 +65,11 @@ void getName(char *name);
 void getNIF(char *nif);
 
 void clearscreen(void);
+
+void getDate(t_date i_data);
+
+void getHour(t_hour i_hora);
+
+void getSecurity(int *security);
 
 #endif // COMMON_H
