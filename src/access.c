@@ -37,9 +37,9 @@ int addaccess(t_resource arr_resource[], int num_ress, t_access arr_access[], in
         printf("Password: ");
         getpassword(arr_access[num_acc].password);
         printf("\n");
-        getDate(arr_access[num_acc].data);
+        arr_access[num_acc].data = getDate();
         printf("\n");
-        getHour(arr_access[num_acc].hora);
+        arr_access[num_acc].hora = getHour();
         num_acc+=1;
         printf("\nAcesso adicionado com sucesso!");
     }
@@ -62,6 +62,8 @@ void viewaccess(t_access arr_access[], int num_acc)
         printf("ID Utilizador: %d\n", arr_access[index].iduser);
         printf("Nome de Utilizador: %s\n", arr_access[index].username);
         printf("Password de Utilizador: %s\n", arr_access[index].password);
+        printf("Data: %s\n", arr_access[index].data);
+        printf("Hora: %s\n", arr_access[index].hora);
     }
     getch();
 }

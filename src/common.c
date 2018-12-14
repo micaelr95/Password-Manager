@@ -50,16 +50,18 @@ void clearscreen(void)
     system("@cls||clear");
 }
 
-void getDate(t_date i_data)
+t_date getDate()
 {
+    t_date i_data;
     printf("Data (dd/mm/aaaa): ");
-    scanf(" %2d/%2d/%4d", i_data.dia, i_data.mes, i_data.ano);
+    scanf(" %2d/%2d/%4d", &i_data.dia, &i_data.mes, &i_data.ano);
 }
 
-void getHour(t_hour i_hora)
+t_hour getHour()
 {
+    t_hour i_hora;
     printf("Horas (hh:mm:ss): ");
-    scanf(" %2d:%2d:%2d", i_hora.hora, i_hora.minuto, i_hora.segundo);
+    scanf(" %2d:%2d:%2d", &i_hora.hora, &i_hora.minuto, &i_hora.segundo);
 }
 
 void getSecurity(int *security)

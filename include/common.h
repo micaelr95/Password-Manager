@@ -66,9 +66,9 @@ void getNIF(char *nif);
 
 void clearscreen(void);
 
-void getDate(t_date i_data);
+t_date getDate();
 
-void getHour(t_hour i_hora);
+t_hour getHour();
 
 void getSecurity(int *security);
 
