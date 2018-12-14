@@ -6,8 +6,9 @@
 int addaccess(t_resource arr_resource[], int num_ress, t_access arr_access[], int num_acc, int id_user)
 {
     char resourcename[NAMESIZE];
-    int found = 0;
+    int found = -1;
     int index;
+    int validpass = 0;
     clearscreen();
     printf(" -------------------- NOVO ACESSO -------------------- \n");
     printf("Nome do recurso: ");
@@ -16,7 +17,7 @@ int addaccess(t_resource arr_resource[], int num_ress, t_access arr_access[], in
     {
         if(strcmp(arr_resource[index].name, resourcename) == 0)
         {
-            found = 1;
+            found = index;
             break;
         }
     }
@@ -26,7 +27,7 @@ int addaccess(t_resource arr_resource[], int num_ress, t_access arr_access[], in
     char password[PASSSIZE];
 
 
-    if(found == 1)
+    if(found != -1)
     {
         arr_access[num_acc].id = num_acc;
         arr_access[num_acc].idresource = arr_resource[index].id;
@@ -34,11 +35,15 @@ int addaccess(t_resource arr_resource[], int num_ress, t_access arr_access[], in
         arr_access[num_acc].tipo = 0;   // 0 para cria��o e 1 para altera��o
         printf("Nome do utilizador: ");
         getusername(arr_access[num_acc].username);
-        printf("Password: ");
-        getpassword(arr_access[num_acc].password);
-        printf("\n");
+        do
+        {
+            printf("Password: ");
+            getpassword(arr_access[num_acc].password);
+            printf("\nVerifique a password: ");
+            getpassword(arr_access[num_acc].password);
+        }while(validpass==0);
+        verifySecurity(arr_access[num_acc].password, arr_resource[found].grauseguranca);
         arr_access[num_acc].data = getDate();
-        printf("\n");
         arr_access[num_acc].hora = getHour();
         num_acc+=1;
         printf("\nAcesso adicionado com sucesso!");

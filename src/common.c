@@ -26,6 +26,61 @@ void getpassword(char *password)
     password[currentindex++] = '\0';
 }
 
+int verifySecurity(char *password, int security)
+{
+    int valid = 0;
+    int numcount = 0;
+    if(security==1)
+    {
+        if(strlen(*password) == 8)
+        {
+            valid = 1;
+        }
+        else
+        {
+            printf("Password inválida. Insira uma password com no minimo 8 caracteres.");
+        }
+    }
+    else if(security==2)
+    {
+        for(int i = 0; i < strlen(*password); i++)
+        {
+            if(isdigit(password[i]) == 0)
+            {
+                numcount++;
+            }
+        }
+
+        if(strlen(*password) == 8 && numcount> 1)
+        {
+            valid = 1;
+        }
+        else
+        {
+            printf("Password inválida. Insira uma password com no minimo 8 caracteres e 1 numero.");
+        }
+    }
+    else if(security==3)
+    {
+        for(int i = 0; i < strlen(*password); i++)
+        {
+            if(isdigit(password[i]) == 0)
+            {
+                numcount++;
+            }
+        }
+        if(strlen(*password) == 8 && numcount> 1 && strspn(*password, "~!@#$%^&*()_-+=")>1)
+        {
+            valid = 1;
+        }
+        else
+        {
+            printf("Password inválida. Insira uma password com no minimo 8 caracteres e 1 numero e 1 caracter especial.");
+        }
+    }
+    return valid;
+}
+
 void getName(char *name)
 {
     scanf(" %30[^\n]", name);
