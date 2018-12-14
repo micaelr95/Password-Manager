@@ -30,11 +30,11 @@ int verifySecurity(char password[], int security)
 {
     int valid = 0;
     int numcount = 0;
-    printf("Grau de segurança: %d", security);
+    int numspecialchar = 0;
     if(security == 1)
     {
 
-        if(strlen(password) > 8)
+        if(strlen(password) >= 8)
         {
             valid = 1;
         }
@@ -47,16 +47,18 @@ int verifySecurity(char password[], int security)
     {
         for(int i = 0; i < strlen(password); i++)
         {
-            if(isdigit(password[i]) == 0)
+            if(isdigit(password[i]))
             {
                 numcount++;
             }
         }
 
-        if(strlen(password) > 8 && numcount > 1)
+        if(strlen(password) >= 8 && numcount >= 1)
         {
             valid = 1;
         }
+
+
         else
         {
             printf("\nPassword inválida. Insira uma password com no minimo 8 caracteres e 1 numero.\n");
@@ -66,12 +68,19 @@ int verifySecurity(char password[], int security)
     {
         for(int i = 0; i < strlen(password); i++)
         {
-            if(isdigit(password[i]) == 0)
+            if(isdigit(password[i]))
             {
                 numcount++;
             }
         }
-        if(strlen(password) > 8 && numcount > 1 && strspn(password, "~!@#$%^&*()_-+=")>1)
+        for(int i = 0; i < strlen(password); i++)
+        {
+            if(ispunct(password[i]))
+            {
+                numspecialchar++;
+            }
+        }
+        if(strlen(password) >= 8 && numcount >= 1 && numspecialchar>=1)
         {
             valid = 1;
         }
@@ -112,6 +121,7 @@ t_date getDate()
     t_date i_data;
     printf("Data (dd/mm/aaaa): ");
     scanf(" %2d/%2d/%4d", &i_data.dia, &i_data.mes, &i_data.ano);
+    return i_data;
 }
 
 t_hour getHour()
@@ -119,6 +129,7 @@ t_hour getHour()
     t_hour i_hora;
     printf("Horas (hh:mm:ss): ");
     scanf(" %2d:%2d:%2d", &i_hora.hora, &i_hora.minuto, &i_hora.segundo);
+    return i_hora;
 }
 
 void getSecurity(int *security)
