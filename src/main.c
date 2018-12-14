@@ -70,15 +70,19 @@ int menulogin(t_user arr_users[], int *num_users)
                 usernum = login(arr_users, *num_users);
                 if(usernum == -1)
                 {
-                    printf("\nCredenciais erradas! Por favor tente de novo");
-                    getch();
+                    printf("\nCredenciais erradas! Por favor tente de novo.");
                 }
+                else if(usernum == -2)
+                {
+                    printf("\nConta de utilizador não existente.");
+                }
+                getch();
                 break;
             case '2':
                 *num_users = addUser(arr_users, *num_users);
                 break;
         }
-    }while(opcao!='0' && usernum == -1);
+    }while(opcao!='0' && usernum < 0);
     return usernum;
 }
 

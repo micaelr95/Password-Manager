@@ -46,7 +46,7 @@ int login(t_user arr_user[], int arr_index)
 {
     char user[USERNAMESIZE];
     char pass[PASSSIZE];
-    int numuser = -1;
+    int numuser = -2;
     clearscreen();
     printf(" -------------------- LOGIN -------------------- \n");
     printf("Nome do utilizador: ");
@@ -58,6 +58,11 @@ int login(t_user arr_user[], int arr_index)
         if(((strcmp(arr_user[i].username, user)) == 0) && ((strcmp(arr_user[i].masterpassword, pass)) == 0))
         {
             numuser = i;
+            break;
+        }
+        if((strcmp(arr_user[i].username, user)) == 0)
+        {
+            numuser = -1;
             break;
         }
     }
