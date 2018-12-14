@@ -126,9 +126,9 @@ void clearscreen(void)
 t_date getDate()
 {
     t_date i_data;
-    printf("\nData (dd/mm/aaaa): ");
     do
     {
+        printf("\nData (dd/mm/aaaa): ");
         fflush(stdin);
         scanf(" %2d/%2d/%4d", &i_data.dia, &i_data.mes, &i_data.ano);
         if (i_data.dia<01 || i_data.dia>31)
@@ -150,9 +150,9 @@ t_date getDate()
 t_hour getHour()
 {
     t_hour i_hora;
-    printf("\nHoras (hh:mm:ss): ");
     do
     {
+        printf("\nHoras (hh:mm:ss): ");
         fflush(stdin);
         scanf(" %2d:%2d:%2d", &i_hora.hora, &i_hora.minuto, &i_hora.segundo);
         if (i_hora.hora<00 || i_hora.hora>23)

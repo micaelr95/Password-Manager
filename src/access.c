@@ -34,7 +34,7 @@ int addaccess(t_resource arr_resource[], int num_ress, t_access arr_access[], in
         getusername(arr_access[num_acc].username);
         do
         {
-            printf("\nPassword: ");
+            printf("Password: ");
             getpassword(password);
             printf("\nVerifique a password: ");
             getpassword(verifypassword);
