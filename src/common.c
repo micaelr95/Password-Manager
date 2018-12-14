@@ -127,7 +127,8 @@ t_date getDate()
 {
     t_date i_data;
     printf("\nData (dd/mm/aaaa): ");
-    do{
+    do
+    {
         fflush(stdin);
         scanf(" %2d/%2d/%4d", &i_data.dia, &i_data.mes, &i_data.ano);
         if (i_data.dia<01 || i_data.dia>31)
@@ -138,11 +139,11 @@ t_date getDate()
         {
             printf("Mês inválido! Insira de novo.\n");
         }
-        else if (i_data.ano<1111)
+        else if (i_data.ano<1111 || i_data.ano>9999)
         {
             printf("Ano inválido! Insira de novo.\n");
         }
-    }while(i_data.dia<01 && i_data.dia>31 && i_data.mes<01 && i_data.mes>12 && i_data.ano<1111);
+    }while(i_data.dia<01 || i_data.dia>31 || i_data.mes<01 || i_data.mes>12 || i_data.ano<1111 || i_data.ano>9999);
     return i_data;
 }
 
@@ -150,7 +151,8 @@ t_hour getHour()
 {
     t_hour i_hora;
     printf("\nHoras (hh:mm:ss): ");
-    do{
+    do
+    {
         fflush(stdin);
         scanf(" %2d:%2d:%2d", &i_hora.hora, &i_hora.minuto, &i_hora.segundo);
         if (i_hora.hora<00 || i_hora.hora>23)
@@ -165,7 +167,7 @@ t_hour getHour()
         {
             printf("Segundo inválido! Insira de novo.\n");
         }
-    }while(i_hora.hora<00 && i_hora.hora>23 && i_hora.minuto<00 && i_hora.minuto>60 && i_hora.segundo<00 && i_hora.segundo>60);
+    }while(i_hora.hora<00 || i_hora.hora>23 || i_hora.minuto<00 || i_hora.minuto>60 || i_hora.segundo<00 || i_hora.segundo>60);
     return i_hora;
 }
 
