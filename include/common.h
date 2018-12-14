@@ -60,7 +60,7 @@ void getusername(char *user);
 
 void getpassword(char *pass);
 
-int verifySecurity(char *password, int security);
+int verifySecurity(char password[], int security);
 
 void getName(char *name);
 

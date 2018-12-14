@@ -43,7 +43,7 @@ void viewResource(t_resource arr_resource[], int num_res)
     printf(" -------------------- LISTA DE RECURSOS -------------------- \n");
     for(int index = 0; index < num_res; index++)
     {
-        printf("ID: %d\n", arr_resource[index].id);
+        printf("\nID: %d\n", arr_resource[index].id);
         printf("Nome: %s\n", arr_resource[index].name);
         printf("Grau de Segurança: %d\n", arr_resource[index].grauseguranca);
         printf("Designação: %s\n", arr_resource[index].designacao);

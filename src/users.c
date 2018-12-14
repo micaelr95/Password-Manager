@@ -34,7 +34,7 @@ void showUser(t_user arrusers[], int user_num)
 {
     clearscreen();
     printf(" -------------------- Informações do Utilizador -------------------- \n");
-    printf("ID: %d\n", arrusers[user_num].id);
+    printf("\nID: %d\n", arrusers[user_num].id);
     printf("Nome: %s\n", arrusers[user_num].nome);
     printf("NIF: %d\n", arrusers[user_num].nif);
     printf("Nome de utilizador: %s\n", arrusers[user_num].username);
