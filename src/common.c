@@ -16,7 +16,14 @@ void getpassword(char *password)
     do
     {
         passwordchar = getch();
-        if(passwordchar!=13)
+        if(passwordchar==8 && currentindex>0) // 8 tecla apagar (backspace)
+        {
+            // '\b' apaga caracter da consola depois mete um espaco para apagar
+            printf("\b \b");
+            currentindex--;
+
+        }
+        else if(passwordchar!=13)   // 13 tecla enter
         {
             printf("*");
             password[currentindex] = passwordchar;

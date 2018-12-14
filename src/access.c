@@ -38,8 +38,6 @@ int addaccess(t_resource arr_resource[], int num_ress, t_access arr_access[], in
             getpassword(password);
             printf("\nVerifique a password: ");
             getpassword(verifypassword);
-            printf("Password: %s\n", password);
-            printf("Verificação: %s\n", verifypassword);
             if(strcmp(password, verifypassword) == 0)
             {
                 validpass = verifySecurity(password, arr_resource[found].grauseguranca);
