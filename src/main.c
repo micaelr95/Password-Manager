@@ -56,6 +56,7 @@ int menulogin(t_user arr_users[], int *num_users)
 
     int opcao;
     int usernum = -1;
+    (*num_users) = loadUsersData(arr_users);
     do
     {
         clearscreen();
