@@ -72,12 +72,13 @@ int menulogin(t_user arr_users[], int *num_users)
                 if(usernum == -1)
                 {
                     printf("\nCredenciais erradas! Por favor tente de novo.");
+                    getch();
                 }
                 else if(usernum == -2)
                 {
                     printf("\nConta de utilizador não existente.");
+                    getch();
                 }
-                getch();
                 break;
             case '2':
                 *num_users = addUser(arr_users, *num_users);
