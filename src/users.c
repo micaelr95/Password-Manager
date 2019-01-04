@@ -82,12 +82,10 @@ int loadUsersData(t_user arr_users[])
     }
     else
     {
-        while(feof(file) == 0)
-        {
-            fread(arr_users, sizeof(t_user), arr_index, file);
-        }
+        fread(&arr_index, sizeof(int), 1, file);
+        fread(arr_users, sizeof(t_user), arr_index, file);
+        fclose(file);
     }
-    fclose(file);
     return arr_index;
 }
 
@@ -101,8 +99,8 @@ void saveUsersData(t_user arr_users[], int arr_index)
     }
     else
     {
+        fwrite(&arr_index, sizeof(int), 1, file);
         fwrite(arr_users, sizeof(t_user), arr_index, file);
     }
     fclose(file);
 }
-
