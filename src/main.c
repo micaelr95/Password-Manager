@@ -5,7 +5,7 @@
 #include "resources.h"
 #include "access.h"
 
-int menulogin(t_user arr_users[], int *num_users);
+int menulogin(t_user arr_users[], int *num_users, t_resource arr_resources[], int *resources_index, t_access arr_access[], int *access_index);
 void menuresources(t_resource arr_resources[], int *num_resources);
 void menuaccess(t_resource arr_resources[], int *num_resources, t_access arr_access[], int *num_access, int num_user);
 
@@ -22,7 +22,7 @@ int main()
 
     setlocale(LC_ALL, "");
 
-    usernum = menulogin(users, &userindex);
+    usernum = menulogin(users, &userindex, resources, &resourceindex, access, &accessindex);
     if (usernum != -1)
     {
         do
@@ -32,6 +32,7 @@ int main()
             printf("[1] Recursos\n");
             printf("[2] Acessos\n");
             printf("[3] Informações do Utilizador\n");
+            printf("[4] Guardar Dados\n");
             printf("\n[0] Sair\n");
             opcao = getch();
             switch (opcao)
@@ -45,21 +46,34 @@ int main()
                 case '3':
                     showUser(users, usernum);
                     break;
+                case '4':
+                    clearscreen();
+                    saveToFile(users, userindex, resources, resourceindex, access, accessindex);
+                    printf("\nDados gravados\n");
+                    getch();
+                    break;
             }
         }while(opcao!='0');
     }
     return 0;
 }
 
-int menulogin(t_user arr_users[], int *num_users)
+int menulogin(t_user arr_users[], int *num_users, t_resource arr_resources[], int *resources_index, t_access arr_access[], int *access_index)
 {
 
     int opcao;
     int usernum = -1;
-    (*num_users) = loadUsersData(arr_users);
+    int users = 0, resources = 0, access = 0;
+    readFromFile(arr_users, &users, arr_resources, &resources, arr_access, &access);
+    *num_users = users;
+    *resources_index = resources;
+    *access_index = access;
+    showUser(arr_users, users);
     do
     {
         clearscreen();
+        printf("Numero de utilizadores: %d", users);
+        printf("Numero de utilizadores: %d", *num_users);
         printf(" -------------------- MENU LOGIN -------------------- \n");
         printf("[1] Login\n");
         printf("[2] Criar Conta\n");

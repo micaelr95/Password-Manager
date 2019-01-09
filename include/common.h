@@ -74,4 +74,8 @@ t_hour getHour();
 
 void getSecurity(int *security);
 
+void saveToFile(t_user arr_users[], int users_index, t_resource arr_resources[], int resources_index, t_access arr_access[], int access_index);
+
+void readFromFile(t_user arr_users[], int *users_index, t_resource arr_resources[], int *resources_index, t_access arr_access[], int *access_index);
+
 #endif // COMMON_H

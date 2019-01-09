@@ -28,7 +28,6 @@ int addUser(t_user arrusers[], int index)
             printf("\nAs palavras passe não coincidem! Tente de novo.\n");
         }
     }while(strcmp(pass, passverify)!=0);
-    saveUsersData(arrusers, index+1);
     return index+1;
 }
 
@@ -69,38 +68,4 @@ int login(t_user arr_user[], int arr_index)
         }
     }
     return numuser;
-}
-
-int loadUsersData(t_user arr_users[])
-{
-    FILE *file;
-    int arr_index = 0;
-    file = fopen("data.dat", "rb");
-    if(file == NULL)
-    {
-        printf("Erro ao abrir o ficheiro");
-    }
-    else
-    {
-        fread(&arr_index, sizeof(int), 1, file);
-        fread(arr_users, sizeof(t_user), arr_index, file);
-        fclose(file);
-    }
-    return arr_index;
-}
-
-void saveUsersData(t_user arr_users[], int arr_index)
-{
-    FILE *file;
-    file = fopen("data.dat", "wb");
-    if(file == NULL)
-    {
-        printf("Erro ao criar o ficheiro");
-    }
-    else
-    {
-        fwrite(&arr_index, sizeof(int), 1, file);
-        fwrite(arr_users, sizeof(t_user), arr_index, file);
-    }
-    fclose(file);
 }
