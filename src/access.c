@@ -64,19 +64,41 @@ int addaccess(t_resource arr_resource[], int num_ress, t_access arr_access[], in
     return num_acc;
 }
 
-void viewaccess(t_access arr_access[], int num_acc)
+void viewaccess(t_resource arr_resource[], int num_ress, t_access arr_access[], int num_acc, int id_user)
 {
+    char resourcename[NAMESIZE];
     clearscreen();
     printf(" -------------------- LISTA DE ACESSOS -------------------- \n");
-    for(int index = 0; index < num_acc; index++)
+    printf("Nome do recurso: ");
+    scanf(" %s", resourcename);
+    // Procura o recurso pelo nome
+    for(int i = 0; i < num_ress; i++)
     {
-        printf("\nID: %d\n", arr_access[index].id);
-        printf("ID Recurso: %d\n", arr_access[index].idresource);
-        printf("ID Utilizador: %d\n", arr_access[index].iduser);
-        printf("Nome de Utilizador: %s\n", arr_access[index].username);
-        printf("Password de Utilizador: %s\n", arr_access[index].password);
-        printf("Data: %d/%d/%d\n", arr_access[index].data);
-        printf("Hora: %d:%d:%d\n", arr_access[index].hora);
+        if(strcmp(arr_resource[i].name, resourcename) == 0)
+        {
+            for(int index = 0; index < num_acc; index++)
+            {
+                // Apenas mostra os acessos com o ID do recurso pretendido e com o ID do utilizador logado
+                if(arr_access[index].idresource == i && arr_access[index].iduser == id_user)
+                {
+                    printf("\n-----------------------------------------------------");
+                    printf("\nID Recurso: %d", arr_access[index].idresource);
+                    printf("\nID Utilizador: %d", arr_access[index].iduser);
+                    printf("\nNome de Utilizador: %s", arr_access[index].username);
+                    printf("\nPassword de Utilizador: %s", arr_access[index].password);
+                    printf("\nData: %d/%d/%d", arr_access[index].data);
+                    printf("\nHora: %d:%d:%d\n", arr_access[index].hora);
+                }
+                else
+                {
+                    printf("O utilizador não tem acessos para este recurso.");
+                }
+            }
+        }
+        else
+        {
+            printf("Recurso não encontrado.");
+        }
     }
     getch();
 }

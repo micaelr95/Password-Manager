@@ -128,7 +128,7 @@ void menuaccess(t_resource arr_resources[], int *num_resources, t_access arr_acc
                 *num_access = addaccess(arr_resources, *num_resources, arr_access, *num_access, num_user);
                 break;
             case '2':
-                viewaccess(arr_access, *num_access);
+                viewaccess(arr_resources, *num_resources, arr_access, *num_access, num_user);
                 break;
         }
     }while(opcao!='0');
