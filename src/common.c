@@ -212,10 +212,10 @@ void readFromFile(t_user arr_users[], int *users_index, t_resource arr_resources
     }
     else
     {
-        fread(&users_index, sizeof(int), 1, file);
-        printf("Num Users: %d", users_index);
-        fread(&resources_index, sizeof(int), 1, file);
-        fread(&arr_access, sizeof(int), 1, file);
+        fread(&(*users_index), sizeof(int), 1, file);
+        printf("Num Users: %d", *users_index);
+        fread(&(*resources_index), sizeof(int), 1, file);
+        fread(&(*arr_access), sizeof(int), 1, file);
         fread(arr_users, sizeof(t_user), users_index, file);
         fread(arr_resources, sizeof(t_resource), resources_index, file);
         fread(arr_access, sizeof(t_access), access_index, file);

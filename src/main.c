@@ -64,10 +64,7 @@ int menulogin(t_user arr_users[], int *num_users, t_resource arr_resources[], in
     int opcao;
     int usernum = -1;
     int users = 0, resources = 0, access = 0;
-    readFromFile(arr_users, &users, arr_resources, &resources, arr_access, &access);
-    *num_users = users;
-    *resources_index = resources;
-    *access_index = access;
+    readFromFile(arr_users, &(*num_users), arr_resources, &(*resources_index), arr_access, &(*access_index));
     showUser(arr_users, users);
     do
     {
