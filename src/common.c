@@ -194,7 +194,7 @@ void saveToFile(t_user arr_users[], int users_index, t_resource arr_resources[],
     {
         fwrite(&users_index, sizeof(int), 1, file);
         fwrite(&resources_index, sizeof(int), 1, file);
-        fwrite(&arr_access, sizeof(int), 1, file);
+        fwrite(&access_index, sizeof(int), 1, file);
         fwrite(arr_users, sizeof(t_user), users_index, file);
         fwrite(arr_resources, sizeof(t_resource), resources_index, file);
         fwrite(arr_access, sizeof(t_access), access_index, file);
@@ -213,13 +213,11 @@ void readFromFile(t_user arr_users[], int *users_index, t_resource arr_resources
     else
     {
         fread(&(*users_index), sizeof(int), 1, file);
-        printf("Num Users: %d", *users_index);
         fread(&(*resources_index), sizeof(int), 1, file);
-        fread(&(*arr_access), sizeof(int), 1, file);
-        fread(arr_users, sizeof(t_user), users_index, file);
-        fread(arr_resources, sizeof(t_resource), resources_index, file);
-        fread(arr_access, sizeof(t_access), access_index, file);
+        fread(&(*access_index), sizeof(int), 1, file);
+        fread(arr_users, sizeof(t_user), *users_index, file);
+        fread(arr_resources, sizeof(t_resource), *resources_index, file);
+        fread(arr_access, sizeof(t_access), *access_index, file);
         fclose(file);
     }
-    getch();
 }

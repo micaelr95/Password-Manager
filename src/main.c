@@ -60,17 +60,12 @@ int main()
 
 int menulogin(t_user arr_users[], int *num_users, t_resource arr_resources[], int *resources_index, t_access arr_access[], int *access_index)
 {
-
     int opcao;
     int usernum = -1;
-    int users = 0, resources = 0, access = 0;
     readFromFile(arr_users, &(*num_users), arr_resources, &(*resources_index), arr_access, &(*access_index));
-    showUser(arr_users, users);
     do
     {
         clearscreen();
-        printf("Numero de utilizadores: %d", users);
-        printf("Numero de utilizadores: %d", *num_users);
         printf(" -------------------- MENU LOGIN -------------------- \n");
         printf("[1] Login\n");
         printf("[2] Criar Conta\n");
@@ -139,7 +134,7 @@ void menuaccess(t_resource arr_resources[], int *num_resources, t_access arr_acc
                 *num_access = addaccess(arr_resources, *num_resources, arr_access, *num_access, num_user);
                 break;
             case '2':
-                viewaccess(arr_resources, *num_resources, arr_access, *num_access, num_user);
+                viewaccess(arr_resources, *num_resources, arr_access, (*num_access), num_user);
                 break;
         }
     }while(opcao!='0');
