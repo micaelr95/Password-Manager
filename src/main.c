@@ -120,7 +120,7 @@ int menulogin(t_user arr_users[], int *num_users, int *user_id_count, t_resource
                 }
                 else if(usernum == -2)
                 {
-                    printf("\nConta de utilizador nao existente.");
+                    printf("\nConta de utilizador não existente.");
                     getch();
                 }
                 break;
