@@ -4,10 +4,12 @@
 #include "users.h"
 #include "resources.h"
 #include "access.h"
+#include "statistics.h"
 
 int menulogin(t_user arr_users[], int *num_users, int *user_id_count, t_resource arr_resources[], int *resources_index, int *resource_id_count, t_access arr_access[], int *access_index, int *access_id_count);
 void menuresources(t_resource arr_resources[], int *num_resources, int *resources_id_counter);
 void menuaccess(t_resource arr_resources[], int *num_resources, t_access arr_access[], int *num_access, int *access_id_counter, int num_user, t_user arr_user[], int userindex);
+void menustatistics(t_resource arr_resources[], int num_resources, t_user arr_user[], int userindex, int num_user);
 
 int main()
 {
@@ -34,10 +36,11 @@ int main()
             printf(" -------------------- MENU PRINCIPAL -------------------- \n");
             printf("[1] Recursos\n");
             printf("[2] Acessos\n");
-            printf("[3] Informações do Utilizador\n");
-            printf("[4] Guardar Dados\n");
+            //printf("[3] Informações do Utilizador\n");
+            printf("[9] Guardar Dados\n");
             if(usernum == 0)
             {
+                printf("[3] Estatisticas\n");
                 printf("[5] Apagar Utilizador\n");
             }
             printf("\n[0] Sair\n");
@@ -51,9 +54,13 @@ int main()
                     menuaccess(resources, &resourceindex, access, &accessindex, &access_next_id, usernum, users, userindex);
                     break;
                 case '3':
-                    showUser(users, usernum);
+                    if(usernum == 0)
+                    {
+                        menustatistics(resources, resourceindex, users, userindex, usernum);
+                    }
+                    //showUser(users, usernum);
                     break;
-                case '4':
+                case '9':
                     clearscreen();
                     saveToFile(users, userindex, user_next_id, resources, resourceindex, resource_next_id, access, accessindex, access_next_id);
                     printf("\nDados gravados\n");
@@ -168,6 +175,30 @@ void menuaccess(t_resource arr_resources[], int *num_resources, t_access arr_acc
             case '3':
                 deleteAccess(arr_resources, *num_resources, arr_access, &(*num_access), num_user, arr_user, userindex);
                 break;
+        }
+    }while(opcao!='0');
+}
+
+void menustatistics(t_resource arr_resources[], int num_resources, t_user arr_user[], int userindex, int num_user)
+{
+    int opcao;
+    do
+    {
+        clearscreen();
+        printf(" -------------------- MENU ESTATISTICAS -------------------- \n");
+        printf("[1] Recurso com mais acessos\n");
+        printf("[2] Utilizador com mais acessos\n");
+        printf("\n[0] Voltar\n");
+        opcao = getch();
+        switch (opcao)
+        {
+            case '1':
+                showresourcemoreaccess(arr_resources, num_resources);
+                break;
+            case '2':
+                break;
+            default:
+                printf("Opção inválida");
         }
     }while(opcao!='0');
 }
