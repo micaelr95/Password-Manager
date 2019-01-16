@@ -38,6 +38,7 @@ int main()
             printf("[2] Acessos\n");
             //printf("[3] Informações do Utilizador\n");
             printf("[9] Guardar Dados\n");
+            printf("[4] Editar utilizador\n");
             if(usernum == 0)
             {
                 printf("[3] Estatisticas\n");
@@ -59,6 +60,9 @@ int main()
                         menustatistics(resources, resourceindex, users, userindex, usernum);
                     }
                     //showUser(users, usernum);
+                    break;
+                case '4':
+                    editUser(users, userindex, usernum);
                     break;
                 case '9':
                     clearscreen();
