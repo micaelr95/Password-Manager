@@ -6,4 +6,6 @@
 
 void showresourcemoreaccess(t_resource arr_resource[], int num_ress);
 
+void showusermoreaccess(t_user arr_user[], int num_user);
+
 #endif // STATISTICS_H

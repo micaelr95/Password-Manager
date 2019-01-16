@@ -196,6 +196,7 @@ void menustatistics(t_resource arr_resources[], int num_resources, t_user arr_us
                 showresourcemoreaccess(arr_resources, num_resources);
                 break;
             case '2':
+                showusermoreaccess(arr_user, userindex);
                 break;
             default:
                 printf("Opção inválida");
