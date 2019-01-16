@@ -2,7 +2,7 @@
 #include "common.h"
 #include <string.h>
 
-int addResource(t_resource arr_resource[], int num_res)
+void addResource(t_resource arr_resource[], int *num_res, int *resource_id_counter)
 {
     char name[NAMESIZE];
     int found = 0;
@@ -11,7 +11,7 @@ int addResource(t_resource arr_resource[], int num_res)
     printf(" -------------------- NOVO RECURSO -------------------- \n");
     printf("Nome: ");
     getName(name);
-    for(index = 0; index < num_res; index++)
+    for(index = 0; index < *num_res; index++)
     {
         if((strcmp(arr_resource[index].name, name)) == 0)
         {
@@ -19,14 +19,15 @@ int addResource(t_resource arr_resource[], int num_res)
         }
     }
 
-    if(found == 0 && index == num_res)
+    if(found == 0 && index == *num_res)
     {
-        arr_resource[num_res].id = num_res;
-        strcpy(arr_resource[num_res].name, name);
-        getSecurity(&arr_resource[num_res].grauseguranca);
+        arr_resource[*num_res].id = *resource_id_counter;
+        strcpy(arr_resource[*num_res].name, name);
+        getSecurity(&arr_resource[*num_res].grauseguranca);
         printf("Designação: ");
-        getName(arr_resource[num_res].designacao);
-        num_res+=1;
+        getName(arr_resource[*num_res].designacao);
+        *num_res+=1;
+        *resource_id_counter+=1;
         printf("Recurso adicionado com sucesso!");
     }
     else
@@ -34,7 +35,6 @@ int addResource(t_resource arr_resource[], int num_res)
         printf("Este recurso já existe!");
     }
     getch();
-    return num_res;
 }
 
 void viewResource(t_resource arr_resource[], int num_res)
@@ -47,6 +47,49 @@ void viewResource(t_resource arr_resource[], int num_res)
         printf("Nome: %s\n", arr_resource[index].name);
         printf("Grau de Segurança: %d\n", arr_resource[index].grauseguranca);
         printf("Designação: %s\n", arr_resource[index].designacao);
+        printf("Número de acessos: %d\n", arr_resource[index].num_access);
+    }
+    getch();
+}
+
+void deleteResource(t_resource arr_resource[], int *num_ress)
+{
+    char name[NAMESIZE];
+    int found = 0;
+    clearscreen();
+    printf(" -------------------- ELIMINAR RECURSO -------------------- \n");
+    printf("Nome do recurso a eliminar: ");
+    getName(name);
+
+    for(int i = 0; i < *num_ress; i++)
+    {
+        if((strcmp(arr_resource[i].name, name)) == 0)
+        {
+            found = 1;
+            if(arr_resource[i].num_access == 0)
+            {
+                for(int j = i; j < *num_ress; j++)
+                {
+                    arr_resource[j].id = arr_resource[j+1].id;
+                    strcpy(arr_resource[j].name, arr_resource[j+1].name);
+                    strcpy(arr_resource[j].designacao, arr_resource[j+1].designacao);
+                    arr_resource[j].grauseguranca = arr_resource[j+1].grauseguranca;
+                    arr_resource[j].num_access = arr_resource[j+1].num_access;
+                }
+                printf("Recurso eliminado\n");
+                *num_ress-=1;
+                break;
+            }
+            else
+            {
+                printf("Não é possivel eliminar o recurso porque ha acessos associados.\n");
+            }
+        }
+    }
+
+    if (found == 0)
+    {
+        printf("Recurso não encontrado\n");
     }
     getch();
 }

@@ -111,11 +111,11 @@ void getNIF(char *nif)
     {
         fflush(stdin);
         scanf(" %s", nif);
-        if(strlen(nif) != NIFSIZE)
+        if(strlen(nif) != NIFSIZE-1)
         {
             printf("Numero de identificação fiscal incorreto. Insira de novo: ");
         }
-    }while(strlen(nif) != NIFSIZE);
+    }while(strlen(nif) != NIFSIZE-1);
 }
 
 void clearscreen(void)
@@ -182,7 +182,7 @@ void getSecurity(int *security)
     }while(*security <1 && *security>3);
 }
 
-void saveToFile(t_user arr_users[], int users_index, t_resource arr_resources[], int resources_index, t_access arr_access[], int access_index)
+void saveToFile(t_user arr_users[], int users_index, int users_ID_count, t_resource arr_resources[], int resources_index, int resources_ID_count, t_access arr_access[], int access_index, int access_ID_count)
 {
     FILE *file;
     file = fopen("data.dat", "wb");
@@ -195,6 +195,9 @@ void saveToFile(t_user arr_users[], int users_index, t_resource arr_resources[],
         fwrite(&users_index, sizeof(int), 1, file);
         fwrite(&resources_index, sizeof(int), 1, file);
         fwrite(&access_index, sizeof(int), 1, file);
+        fwrite(&users_ID_count, sizeof(int), 1, file);
+        fwrite(&resources_ID_count, sizeof(int), 1, file);
+        fwrite(&access_ID_count, sizeof(int), 1, file);
         fwrite(arr_users, sizeof(t_user), users_index, file);
         fwrite(arr_resources, sizeof(t_resource), resources_index, file);
         fwrite(arr_access, sizeof(t_access), access_index, file);
@@ -202,22 +205,28 @@ void saveToFile(t_user arr_users[], int users_index, t_resource arr_resources[],
     }
 }
 
-void readFromFile(t_user arr_users[], int *users_index, t_resource arr_resources[], int *resources_index, t_access arr_access[], int *access_index)
+int readFromFile(t_user arr_users[], int *users_index, int *users_ID_count, t_resource arr_resources[], int *resources_index, int *resources_ID_count, t_access arr_access[], int *access_index, int *access_ID_count)
 {
+    int status = 0;
     FILE *file;
     file = fopen("data.dat", "rb");
     if(file == NULL)
     {
         printf("Erro ao criar o ficheiro");
+        status = 1;
     }
     else
     {
         fread(&(*users_index), sizeof(int), 1, file);
         fread(&(*resources_index), sizeof(int), 1, file);
         fread(&(*access_index), sizeof(int), 1, file);
+        fread(&(*users_ID_count), sizeof(int), 1, file);
+        fread(&(*resources_ID_count), sizeof(int), 1, file);
+        fread(&(*access_ID_count), sizeof(int), 1, file);
         fread(arr_users, sizeof(t_user), *users_index, file);
         fread(arr_resources, sizeof(t_resource), *resources_index, file);
         fread(arr_access, sizeof(t_access), *access_index, file);
         fclose(file);
     }
+    return status;
 }
