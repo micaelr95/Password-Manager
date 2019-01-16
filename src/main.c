@@ -98,6 +98,7 @@ int menulogin(t_user arr_users[], int *num_users, int *user_id_count, t_resource
         strcpy(arr_users[*num_users].username, "admin");
         strcpy(arr_users[*num_users].masterpassword, "admin");
         strcpy(arr_users[*num_users].nif, "99999999");
+        arr_users[*num_users].num_access = 0;
         *user_id_count+=1;
         *num_users+=1;
     }
