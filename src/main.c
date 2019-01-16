@@ -172,8 +172,9 @@ void menuaccess(t_resource arr_resources[], int *num_resources, t_access arr_acc
         clearscreen();
         printf(" -------------------- MENU ACESSOS -------------------- \n");
         printf("[1] Adicionar\n");
-        printf("[2] Ver\n");
-        printf("[3] Apagar\n");
+        printf("[2] Editar\n");
+        printf("[3] Ver\n");
+        printf("[4] Apagar\n");
         printf("\n[0] Voltar\n");
         opcao = getch();
         switch (opcao)
@@ -182,9 +183,12 @@ void menuaccess(t_resource arr_resources[], int *num_resources, t_access arr_acc
                 addaccess(arr_resources, *num_resources, arr_access, &(*num_access), &(*access_id_counter), num_user, arr_user, userindex);
                 break;
             case '2':
-                viewaccess(arr_resources, *num_resources, arr_access, (*num_access), num_user);
+                editAccess(arr_resources, num_resources, arr_access, *num_access, num_user);
                 break;
             case '3':
+                viewaccess(arr_resources, *num_resources, arr_access, (*num_access), num_user);
+                break;
+            case '4':
                 deleteAccess(arr_resources, *num_resources, arr_access, &(*num_access), num_user, arr_user, userindex);
                 break;
         }
