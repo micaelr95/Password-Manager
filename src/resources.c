@@ -26,6 +26,11 @@ void addResource(t_resource arr_resource[], int *num_res, int *resource_id_count
         getSecurity(&arr_resource[*num_res].grauseguranca);
         printf("Designação: ");
         getName(arr_resource[*num_res].designacao);
+        do
+        {
+            printf("Tipo de recurso (1 - App; 2 - Website; 3 - Dispositivo): ");
+            scanf(" %d", &arr_resource[*num_res].tipo);
+        }while(arr_resource[*num_res].tipo<1 || arr_resource[*num_res].tipo>3);
         *num_res+=1;
         *resource_id_counter+=1;
         printf("Recurso adicionado com sucesso!");
@@ -47,6 +52,18 @@ void viewResource(t_resource arr_resource[], int num_res)
         printf("Nome: %s\n", arr_resource[index].name);
         printf("Grau de Segurança: %d\n", arr_resource[index].grauseguranca);
         printf("Designação: %s\n", arr_resource[index].designacao);
+        switch(arr_resource[index].tipo)
+        {
+            case 1:
+                printf("Tipo: App\n");
+            break;
+            case 2:
+                printf("Tipo: Website\n");
+            break;
+            case 3:
+                printf("Tipo: Dispositivo\n");
+            break;
+        }
         printf("Número de acessos: %d\n", arr_resource[index].num_access);
     }
     getch();

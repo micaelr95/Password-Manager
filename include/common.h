@@ -42,6 +42,7 @@ typedef struct
     char name[NAMESIZE];
     int grauseguranca;
     char designacao[NAMESIZE];
+    int tipo;
     int num_access;
 } t_resource;
 
