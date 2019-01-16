@@ -46,25 +46,32 @@ void viewResource(t_resource arr_resource[], int num_res)
 {
     clearscreen();
     printf(" -------------------- LISTA DE RECURSOS -------------------- \n");
-    for(int index = 0; index < num_res; index++)
+    if(num_res > 0)
     {
-        printf("\nID: %d\n", arr_resource[index].id);
-        printf("Nome: %s\n", arr_resource[index].name);
-        printf("Grau de Segurança: %d\n", arr_resource[index].grauseguranca);
-        printf("Designação: %s\n", arr_resource[index].designacao);
-        switch(arr_resource[index].tipo)
+        for(int index = 0; index < num_res; index++)
         {
-            case 1:
-                printf("Tipo: App\n");
-            break;
-            case 2:
-                printf("Tipo: Website\n");
-            break;
-            case 3:
-                printf("Tipo: Dispositivo\n");
-            break;
+            printf("\nID: %d\n", arr_resource[index].id);
+            printf("Nome: %s\n", arr_resource[index].name);
+            printf("Grau de Segurança: %d\n", arr_resource[index].grauseguranca);
+            printf("Designação: %s\n", arr_resource[index].designacao);
+            switch(arr_resource[index].tipo)
+            {
+                case 1:
+                    printf("Tipo: App\n");
+                break;
+                case 2:
+                    printf("Tipo: Website\n");
+                break;
+                case 3:
+                    printf("Tipo: Dispositivo\n");
+                break;
+            }
+            printf("Número de acessos: %d\n", arr_resource[index].num_access);
         }
-        printf("Número de acessos: %d\n", arr_resource[index].num_access);
+    }
+    else
+    {
+        printf("Recurso não encontrado\n");
     }
     getch();
 }
