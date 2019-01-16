@@ -188,6 +188,7 @@ void menustatistics(t_resource arr_resources[], int num_resources, t_user arr_us
         printf(" -------------------- MENU ESTATISTICAS -------------------- \n");
         printf("[1] Recurso com mais acessos\n");
         printf("[2] Utilizador com mais acessos\n");
+        printf("[3] Recurso por tipo\n");
         printf("\n[0] Voltar\n");
         opcao = getch();
         switch (opcao)
@@ -197,6 +198,9 @@ void menustatistics(t_resource arr_resources[], int num_resources, t_user arr_us
                 break;
             case '2':
                 showusermoreaccess(arr_user, userindex);
+                break;
+            case '3':
+                showresourcebytype(arr_resources, num_resources);
                 break;
             default:
                 printf("Opção inválida");
