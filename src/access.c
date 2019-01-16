@@ -50,7 +50,8 @@ void addaccess(t_resource arr_resource[], int num_ress, t_access arr_access[], i
             {
                 printf("\nAs passwords são diferentes. Por favor insira duas passwords iguais.\n");
             }
-        }while(validpass==0);
+        }
+        while(validpass==0);
         arr_access[*num_acc].data = getDate();
         arr_access[*num_acc].hora = getHour();
         arr_resource[found].num_access+=1;
@@ -193,5 +194,54 @@ void deleteAccess(t_resource arr_resource[], int num_ress, t_access arr_access[]
         printf("ID inválido\n");
     }
 
+    getch();
+}
+
+void editAccess(t_resource arr_resource[], int num_ress, t_access arr_access[], int num_acc, int user_index)
+{
+    char name[NAMESIZE];
+    char newusername[NAMESIZE];
+    char password[PASSSIZE];
+    char verifypassword[PASSSIZE];
+    int validpass = 0;
+    int found = 0;
+    clearscreen();
+    printf(" -------------------- EDITAR ACESSO -------------------- \n");
+    printf("Nome do acesso a editar: ");
+    getName(name);
+
+    for(int i = 0; i < num_acc; i++)
+    {
+        if((strcmp(arr_resource[i].name, name)) == 0)
+        {
+            found = 1;
+            if(arr_resource[i].num_access == 0)
+            {
+                printf("Password: ");
+                getpassword(password);
+                printf("\nVerifique a password: ");
+                getpassword(verifypassword);
+                if(strcmp(password, verifypassword) == 0)
+                {
+                    validpass = verifySecurity(password, arr_resource[found].grauseguranca);
+                    if(validpass == 1)
+                    {
+                        strcpy(arr_access[num_acc].password, password);
+                    }
+                }
+                else
+                {
+                    printf("\nAs passwords são diferentes. Por favor insira duas passwords iguais.\n");
+                }
+
+                break;
+            }
+        }
+    }
+
+    if (found == 0)
+    {
+        printf("Acesso não encontrado\n");
+    }
     getch();
 }
