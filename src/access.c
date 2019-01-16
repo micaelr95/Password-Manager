@@ -197,7 +197,7 @@ void deleteAccess(t_resource arr_resource[], int num_ress, t_access arr_access[]
     getch();
 }
 
-void editAccess(t_resource arr_resource[], int num_ress, t_access arr_access[], int num_acc, int user_index)
+void editAccess(t_resource arr_resource[], int num_ress, t_access arr_access[], int num_acc, int id_user)
 {
     char name[NAMESIZE];
     char newusername[NAMESIZE];
@@ -205,43 +205,75 @@ void editAccess(t_resource arr_resource[], int num_ress, t_access arr_access[], 
     char verifypassword[PASSSIZE];
     int validpass = 0;
     int found = 0;
+    int editID;
+    int access_found = -1;
     clearscreen();
     printf(" -------------------- EDITAR ACESSO -------------------- \n");
     printf("Nome do acesso a editar: ");
     getName(name);
 
-    for(int i = 0; i < num_acc; i++)
+    for(int i = 0; i < num_ress; i++)
     {
         if((strcmp(arr_resource[i].name, name)) == 0)
         {
             found = 1;
-            if(arr_resource[i].num_access == 0)
+            for(int j = 0; j < num_acc; j++)
             {
-                printf("Password: ");
-                getpassword(password);
-                printf("\nVerifique a password: ");
-                getpassword(verifypassword);
-                if(strcmp(password, verifypassword) == 0)
+                // Apenas mostra os acessos com o ID do recurso pretendido e com o ID do utilizador logado
+                if(arr_access[j].idresource == arr_resource[i].id && arr_access[j].iduser == id_user)
                 {
-                    validpass = verifySecurity(password, arr_resource[found].grauseguranca);
-                    if(validpass == 1)
-                    {
-                        strcpy(arr_access[num_acc].password, password);
-                    }
+                    printf("\n-----------------------------------------------------");
+                    printf("\nID Acesso: %d", arr_access[j].id);
+                    printf("\nID Recurso: %d", arr_access[j].idresource);
+                    printf("\nID Utilizador: %d", arr_access[j].iduser);
+                    printf("\nNome de Utilizador: %s", arr_access[j].username);
+                    printf("\nPassword de Utilizador: %s", arr_access[j].password);
+                    printf("\nData: %d/%d/%d", arr_access[j].data);
+                    printf("\nHora: %d:%d:%d\n", arr_access[j].hora);
                 }
-                else
-                {
-                    printf("\nAs passwords são diferentes. Por favor insira duas passwords iguais.\n");
-                }
-
-                break;
             }
+        }
+    }
+
+    printf("\nID do acesso a editar: ");
+    scanf(" %d", &editID);
+
+    for (int i = 0; i < num_acc; i++)
+    {
+        if(arr_access[i].id == editID && arr_access[i].iduser == id_user)
+        {
+            access_found = i;
+            printf("Nome do utilizador: ");
+            getusername(arr_access[i].username);
+            printf("Password: ");
+            getpassword(password);
+            printf("\nVerifique a password: ");
+            getpassword(verifypassword);
+            if(strcmp(password, verifypassword) == 0)
+            {
+                validpass = verifySecurity(password, arr_resource[found].grauseguranca);
+                if(validpass == 1)
+                {
+                    strcpy(arr_access[num_acc].password, password);
+                }
+            }
+            else
+            {
+                printf("\nAs passwords são diferentes. Por favor insira duas passwords iguais.\n");
+            }
+
+
+            printf("\nAcesso editado.");
         }
     }
 
     if (found == 0)
     {
-        printf("Acesso não encontrado\n");
+        printf("Recuso não encontrado\n");
+    }
+    if(access_found == -1)
+    {
+        printf("ID inválido\n");
     }
     getch();
 }

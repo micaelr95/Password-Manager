@@ -183,7 +183,7 @@ void menuaccess(t_resource arr_resources[], int *num_resources, t_access arr_acc
                 addaccess(arr_resources, *num_resources, arr_access, &(*num_access), &(*access_id_counter), num_user, arr_user, userindex);
                 break;
             case '2':
-                editAccess(arr_resources, num_resources, arr_access, *num_access, num_user);
+                editAccess(arr_resources, *num_resources, arr_access, *num_access, num_user);
                 break;
             case '3':
                 viewaccess(arr_resources, *num_resources, arr_access, (*num_access), num_user);

@@ -5,7 +5,7 @@
 // Pede o nome do utilizador
 void getusername(char *username)
 {
-    scanf(" %20s", username);
+    scanf(" %50s", username);
 }
 
 // Pede a palavra passe ao utilizador
