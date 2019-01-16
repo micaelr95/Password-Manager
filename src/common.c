@@ -159,15 +159,15 @@ t_hour getHour()
         {
             printf("Hora inválida! Insira de novo.\n");
         }
-        else if (i_hora.minuto<00 || i_hora.minuto>60)
+        else if (i_hora.minuto<00 || i_hora.minuto>59)
         {
             printf("Minuto inválido! Insira de novo.\n");
         }
-        else if (i_hora.segundo<00 || i_hora.segundo>60)
+        else if (i_hora.segundo<00 || i_hora.segundo>59)
         {
             printf("Segundo inválido! Insira de novo.\n");
         }
-    }while(i_hora.hora<00 || i_hora.hora>23 || i_hora.minuto<00 || i_hora.minuto>60 || i_hora.segundo<00 || i_hora.segundo>60);
+    }while(i_hora.hora<00 || i_hora.hora>23 || i_hora.minuto<00 || i_hora.minuto>59 || i_hora.segundo<00 || i_hora.segundo>59);
     return i_hora;
 }
 
