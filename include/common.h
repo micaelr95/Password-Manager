@@ -6,7 +6,7 @@
 #define MAX_ACCESS 200
 
 #define NAMESIZE 30
-#define USERNAMESIZE 20
+#define USERNAMESIZE 50
 #define PASSSIZE 20
 #define NIFSIZE 10
 #define DATE 8
