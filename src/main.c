@@ -37,10 +37,11 @@ int main()
             printf("[1] Recursos\n");
             printf("[2] Acessos\n");
             printf("[3] Informações do Utilizador\n");
+            printf("[4] Editar utilizador\n");
             if(usernum == 0)
             {
-                printf("[4] Estatisticas\n");
-                printf("[5] Apagar Utilizador\n");
+                printf("[5] Estatisticas\n");
+                printf("[6] Apagar Utilizador\n");
             }
             printf("[9] Guardar Dados\n");
             printf("\n[0] Sair\n");
@@ -57,12 +58,15 @@ int main()
                     showUser(users, usernum);
                     break;
                 case '4':
+                    editUser(users, userindex, usernum);
+                    break;
+                case '5':
                     if(usernum == 0)
                     {
                         menustatistics(resources, resourceindex, users, userindex, usernum);
                     }
                     break;
-                case '5':
+                case '6':
                     if(usernum == 0)
                     {
                         deleteUser(users, &userindex);
@@ -116,7 +120,7 @@ int menulogin(t_user arr_users[], int *num_users, int *user_id_count, t_resource
                 }
                 else if(usernum == -2)
                 {
-                    printf("\nConta de utilizador não existente.");
+                    printf("\nConta de utilizador nao existente.");
                     getch();
                 }
                 break;

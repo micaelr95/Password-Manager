@@ -108,3 +108,39 @@ void deleteUser(t_user arr_user[], int *arr_index)
     }
     getch();
 }
+
+void editUser(t_user arr_user[], int arr_index, int user_id)
+{
+    int found = 0;
+    char pass[PASSSIZE];
+    char passverify[PASSSIZE];
+    clearscreen();
+    printf(" -------------------- EDITAR UTILIZADOR -------------------- \n");
+    for(int i=0; i < arr_index; i++)
+    {
+        if(arr_user[i].id == user_id)
+        {
+            found = 1;
+            do
+            {
+                printf("Password: ");
+                getpassword(pass);
+                printf("\nVerifique a password: ");
+                getpassword(passverify);
+                if(strcmp(pass, passverify)==0)
+                {
+                    strcpy(arr_user[i].masterpassword, pass);
+                }
+                else
+                {
+                    printf("\nAs palavras passe não coincidem! Tente de novo.\n");
+                }
+            }while(strcmp(pass, passverify)!=0);
+        }
+    }
+    if(found == 0)
+    {
+        printf("Utilizador não existe");
+    }
+    getch();
+}
