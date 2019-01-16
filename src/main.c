@@ -141,8 +141,9 @@ void menuresources(t_resource arr_resources[], int *num_resources, int *resource
         clearscreen();
         printf(" -------------------- MENU RECURSOS -------------------- \n");
         printf("[1] Adicionar\n");
-        printf("[2] Ver\n");
-        printf("[3] Eliminar\n");
+        printf("[2] Editar\n");
+        printf("[3] Ver\n");
+        printf("[4] Eliminar\n");
         printf("\n[0] Voltar\n");
         opcao = getch();
         switch (opcao)
@@ -151,9 +152,12 @@ void menuresources(t_resource arr_resources[], int *num_resources, int *resource
                 addResource(arr_resources, &(*num_resources), &(*resources_id_counter));
                 break;
             case '2':
-                viewResource(arr_resources, *num_resources);
+                editResource(arr_resources, *num_resources);
                 break;
             case '3':
+                viewResource(arr_resources, *num_resources);
+                break;
+            case '4':
                 deleteResource(arr_resources, &(*num_resources));
                 break;
         }

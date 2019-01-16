@@ -117,3 +117,42 @@ void deleteResource(t_resource arr_resource[], int *num_ress)
     }
     getch();
 }
+
+void editResource(t_resource arr_resource[], int num_ress)
+{
+    char name[NAMESIZE];
+    char newname[NAMESIZE];
+    int found = 0;
+    clearscreen();
+    printf(" -------------------- EDITAR RECURSO -------------------- \n");
+    printf("Nome do recurso a eliminar: ");
+    getName(name);
+
+    for(int i = 0; i < num_ress; i++)
+    {
+        if((strcmp(arr_resource[i].name, name)) == 0)
+        {
+            found = 1;
+            if(arr_resource[i].num_access == 0)
+            {
+                printf("Novo nome: ");
+                getName(arr_resource[i].name);
+                printf("Nova designação: ");
+                getName(arr_resource[i].designacao);
+                getSecurity(&arr_resource[i].grauseguranca);
+                do
+                {
+                    printf("Tipo de recurso (1 - App; 2 - Website; 3 - Dispositivo): ");
+                    scanf(" %d", &arr_resource[i].tipo);
+                }while(arr_resource[i].tipo<1 || arr_resource[i].tipo>3);
+                break;
+            }
+        }
+    }
+
+    if (found == 0)
+    {
+        printf("Recurso não encontrado\n");
+    }
+    getch();
+}
