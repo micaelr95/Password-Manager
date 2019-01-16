@@ -36,13 +36,13 @@ int main()
             printf(" -------------------- MENU PRINCIPAL -------------------- \n");
             printf("[1] Recursos\n");
             printf("[2] Acessos\n");
-            //printf("[3] Informações do Utilizador\n");
-            printf("[9] Guardar Dados\n");
+            printf("[3] Informações do Utilizador\n");
             if(usernum == 0)
             {
-                printf("[3] Estatisticas\n");
+                printf("[4] Estatisticas\n");
                 printf("[5] Apagar Utilizador\n");
             }
+            printf("[9] Guardar Dados\n");
             printf("\n[0] Sair\n");
             opcao = getch();
             switch (opcao)
@@ -54,17 +54,13 @@ int main()
                     menuaccess(resources, &resourceindex, access, &accessindex, &access_next_id, usernum, users, userindex);
                     break;
                 case '3':
+                    showUser(users, usernum);
+                    break;
+                case '4':
                     if(usernum == 0)
                     {
                         menustatistics(resources, resourceindex, users, userindex, usernum);
                     }
-                    //showUser(users, usernum);
-                    break;
-                case '9':
-                    clearscreen();
-                    saveToFile(users, userindex, user_next_id, resources, resourceindex, resource_next_id, access, accessindex, access_next_id);
-                    printf("\nDados gravados\n");
-                    getch();
                     break;
                 case '5':
                     if(usernum == 0)
@@ -72,6 +68,13 @@ int main()
                         deleteUser(users, &userindex);
                     }
                     break;
+                case '9':
+                    clearscreen();
+                    saveToFile(users, userindex, user_next_id, resources, resourceindex, resource_next_id, access, accessindex, access_next_id);
+                    printf("\nDados gravados\n");
+                    getch();
+                    break;
+
             }
         }while(opcao!='0');
     }
